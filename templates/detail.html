@@ -1,0 +1,34 @@
+{% extends 'template.html' %}
+{% block main %}
+<h1>プロフィール詳細</h1>
+<a href="/">
+<button style="margin:10px 0">⬅ 一覧に戻る</button>
+</a>
+<table>
+<tr>
+    <td>id</td><td>{{data['id']}}</td>
+</tr>
+<tr>
+    <td>名前</td><td><input name="name" value="{{data['name']}}" form="update_form"></td>
+</tr>
+<tr>
+    <td>名前（よみがな）</td><td><input name="name_ruby" value="{{data['name_ruby']}}" form="update_form"></td>
+</tr>
+<tr>
+    <td>住所</td><td><input name="address" value="{{data['address']}}" form="update_form"></td>
+</tr>
+<tr>
+    <td>メモ</td><td><input name="memo" type="textbox" value="{{data['memo']}}" form="update_form"></td>
+</tr>
+</table>
+
+<form method="post" action="/delete" style="display:inline">
+    <input type="hidden" name="id" value="{{ data['id'] }}">
+    <input type="submit" value="削除" style="background-color: red">
+</form>
+
+<form method="post" action="/update" style="display:inline" id="update_form">
+    <input type="hidden" name="id" value="{{ data['id'] }}">
+    <input type="submit" value="更新">
+</form>
+{% endblock %}
